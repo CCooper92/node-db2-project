@@ -3,9 +3,9 @@ const Cars = require("./cars-model.js")
 const checkCarId = async (req, res, next) => {
   // DO YOUR MAGIC
   try{
-    const car = await Cars.getById(req.params.id)
-    if(car){
-      req.car = car
+    const cars = await Cars.getById(req.params.id)
+    if(cars){
+      req.cars = cars
       next()
     }else{
       res.status(404).json({message: "car with this id does not exist"})
@@ -33,7 +33,7 @@ const checkVinNumberUnique = (req, res, next) => {
   // DO YOUR MAGIC
 }
 
-exports = {
+module.exports = {
   checkCarId,
   checkCarPayload,
   // checkVinNumberUnique,
